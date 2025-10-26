@@ -11,6 +11,7 @@ import { getRecommendedBenefits, Benefit, getAllUniqueTags } from "@/lib/api";
 import { TagSearch } from "@/components/TagSearch";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import CrasMapDialog from "@/pages/CrasMapDialog";
+import DocumentsDialog from "@/pages/DocumentsDialog";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -138,9 +139,21 @@ const Dashboard = () => {
             <div className="bg-card rounded-2xl p-6 shadow-sm border border-border">
               <h3 className="text-lg font-bold text-foreground mb-4">Atalhos úteis</h3>
               <div className="space-y-2">
-                <Button variant="ghost" className="w-full justify-start text-primary hover:text-primary">
-                  Documentos
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" className="w-full justify-start text-primary hover:text-primary">
+                      Documentos
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl h-[90vh] flex flex-col">
+                    <DialogHeader>
+                      <DialogTitle>Seus Documentos</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex-1 overflow-y-auto">
+                      <DocumentsDialog />
+                    </div>
+                  </DialogContent>
+                </Dialog>
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="ghost" className="w-full justify-start text-primary hover:text-primary">
